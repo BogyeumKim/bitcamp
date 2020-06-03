@@ -2,8 +2,8 @@ package manager;
 
 import java.sql.Date;
 
-// VO : ÀĞ±âÀü¿ë
-// DTO : ÀĞ±â, ¾²±â
+// VO : ì½ê¸°ì „ìš©
+// DTO : ì½ê¸°, ì“°ê¸°
 public class Emp {
 	
 	private int empno;

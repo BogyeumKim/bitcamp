@@ -12,18 +12,18 @@ import java.util.List;
 public class DeptDao {
 	
 	// DAO = Data Acess Object
-	// µ¥ÀÌÅÍº£ÀÌ½º Ã³¸® ÇÏ´Â Å¬·¡½º
+	// ë°ì´í„°ë² ì´ìŠ¤ ì²˜ë¦¬ í•˜ëŠ” í´ë˜ìŠ¤
 	// 
 	
 	// MVC -> Model, View, Controller
 	// model -> Service , Dao
-	// µ¥ÀÌÅÍº£ÀÌ½º 
+	// ë°ì´í„°ë² ì´ìŠ¤ 
 	
 	
 
 	public int deptEdit(Dept newDept, Connection conn) {
 
-		// JDBC »ç¿ë °´Ã¼
+		// JDBC ì‚¬ìš© ê°ì²´
 		//Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
@@ -32,18 +32,18 @@ public class DeptDao {
 
 		
 		try {
-			// Connection °´Ã¼ »ı¼º
+			// Connection ê°ì²´ ìƒì„±
 			//conn = ConnectionProvider.getConnection();
 
-			// 3. SQL Ã³¸®
+			// 3. SQL ì²˜ë¦¬
 			// Statement or PreparedStatement
-			// pstmt = conn.prepareStatement(SQL ¹®Àå)
+			// pstmt = conn.prepareStatement(SQL ë¬¸ì¥)
 
-			// ÁÖÀÇ !!!!!
-			// ÀÔ·ÂµÈ ¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â ÀÌ¸§ÀÇ µ¥ÀÌÅÍ°¡ Á¸ÀçÇØ¾ß ¼öÁ¤ µ¥ÀÌÅÍ ÀÔ·ÂÀÌ ½ÃÀÛ½ÃÅµ´Ï´Ù.
-			// ±×¸®°í ÀÌ¸§ÀÇ µ¥ÀÌÅÍ´Â À¯ÀÏÁ¶°ÇÀÌ ÀÖ¾î¾ß ÇÕ´Ï´Ù.
-			// À¯ÀÏÁ¶°ÇÀÌ ¾Æ´Ï¶ó¸é ¿©·¯°³ÀÇ Çà¿¡ ¼öÁ¤ Ã³¸®°¡ ÀÌ·ç¾îÁı´Ï´Ù.
-			// ÇöÀç ¹öÀü¿¡¼­´Â À¯ÀÏÇÑ °ªÀ¸·Î »ı°¢ÇÏ°í Ã³¸®ÇÕ´Ï´Ù.
+			// ì£¼ì˜ !!!!!
+			// ì…ë ¥ëœ ìˆ˜ì •í•˜ê³ ì í•˜ëŠ” ì´ë¦„ì˜ ë°ì´í„°ê°€ ì¡´ì¬í•´ì•¼ ìˆ˜ì • ë°ì´í„° ì…ë ¥ì´ ì‹œì‘ì‹œí‚µë‹ˆë‹¤.
+			// ê·¸ë¦¬ê³  ì´ë¦„ì˜ ë°ì´í„°ëŠ” ìœ ì¼ì¡°ê±´ì´ ìˆì–´ì•¼ í•©ë‹ˆë‹¤.
+			// ìœ ì¼ì¡°ê±´ì´ ì•„ë‹ˆë¼ë©´ ì—¬ëŸ¬ê°œì˜ í–‰ì— ìˆ˜ì • ì²˜ë¦¬ê°€ ì´ë£¨ì–´ì§‘ë‹ˆë‹¤.
+			// í˜„ì¬ ë²„ì „ì—ì„œëŠ” ìœ ì¼í•œ ê°’ìœ¼ë¡œ ìƒê°í•˜ê³  ì²˜ë¦¬í•©ë‹ˆë‹¤.
 	
 			String sql = "update dept  set  dname=?, loc=? " + " where deptno=?";
 
@@ -60,7 +60,7 @@ public class DeptDao {
 			e.printStackTrace();
 		} finally {
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			if (rs != null) {
 				try {
 					rs.close();
@@ -105,7 +105,7 @@ public class DeptDao {
 
 	public int deptDelete(String dname) {
 
-		// JDBC »ç¿ë °´Ã¼
+		// JDBC ì‚¬ìš© ê°ì²´
 		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
@@ -115,7 +115,7 @@ public class DeptDao {
 
 		try {
 
-			// Connection °´Ã¼ »ı¼º
+			// Connection ê°ì²´ ìƒì„±
 			conn = ConnectionProvider.getConnection();
 
 			String sql = "delete from dept  where dname=?";
@@ -129,7 +129,7 @@ public class DeptDao {
 			e.printStackTrace();
 		} finally {
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			if (rs != null) {
 				try {
 					rs.close();
@@ -165,7 +165,7 @@ public class DeptDao {
 
 	public List<Dept> deptSearch(String dname) {
 
-		// JDBC »ç¿ë °´Ã¼
+		// JDBC ì‚¬ìš© ê°ì²´
 		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
@@ -177,13 +177,13 @@ public class DeptDao {
 
 		try {
 
-			// 2. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á
-			// Connection °´Ã¼ »ı¼º
+			// 2. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°
+			// Connection ê°ì²´ ìƒì„±
 			conn = ConnectionProvider.getConnection();
 
-			// 3. SQL Ã³¸®
+			// 3. SQL ì²˜ë¦¬
 			// Statement or PreparedStatement
-			// pstmt = conn.prepareStatement(SQL ¹®Àå)
+			// pstmt = conn.prepareStatement(SQL ë¬¸ì¥)
 
 			// Mysql
 			// "SELECT * FROM dept WHERE dname LIKE ?"
@@ -209,7 +209,7 @@ public class DeptDao {
 			
 
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			// pstmt.close();
 			// conn.close();
 
@@ -217,7 +217,7 @@ public class DeptDao {
 			e.printStackTrace();
 		} finally {
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			if (rs != null) {
 				try {
 					rs.close();
@@ -253,7 +253,7 @@ public class DeptDao {
 
 	public int deptInsert(Dept dept) {
 
-		// JDBC »ç¿ë °´Ã¼
+		// JDBC ì‚¬ìš© ê°ì²´
 		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
@@ -263,12 +263,12 @@ public class DeptDao {
 
 		try {
 
-			// Connection °´Ã¼ »ı¼º
+			// Connection ê°ì²´ ìƒì„±
 			conn = ConnectionProvider.getConnection();
 
-			// 3. SQL Ã³¸®
+			// 3. SQL ì²˜ë¦¬
 			// Statement or PreparedStatement
-			// pstmt = conn.prepareStatement(SQL ¹®Àå)
+			// pstmt = conn.prepareStatement(SQL ë¬¸ì¥)
 
 			String sql = "insert into dept  (deptno, dname, loc)  values (?, ?, ?)";
 
@@ -280,7 +280,7 @@ public class DeptDao {
 			resultCnt = pstmt.executeUpdate();
 
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			// pstmt.close();
 			// conn.close();
 
@@ -288,7 +288,7 @@ public class DeptDao {
 			e.printStackTrace();
 		} finally {
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			if (rs != null) {
 				try {
 					rs.close();
@@ -327,19 +327,19 @@ public class DeptDao {
 		// VO : Value Object , read only , getter
 		// DTO : Data Transfer Object  getter/setter , toString, equals
 
-		// JDBC »ç¿ë °´Ã¼
+		// JDBC ì‚¬ìš© ê°ì²´
 		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		// Dao Å¬·¡½º Ãß°¡
+		// Dao í´ë˜ìŠ¤ ì¶”ê°€
 		List<Dept> deptList= new ArrayList<>();
 
-		// °ø¹é ÀÔ·Â¿¡ ´ëÇÑ ¿¹¿ÜÃ³¸®°¡ ÀÖ¾î¾ß ÇÏ³ª ÀÌ¹ø ¹öÀü¿¡¼­´Â ¸ğµÎ Àß ÀÔ·ÂµÈ°ÍÀ¸·Î Ã³¸®ÇÕ´Ï´Ù.
+		// ê³µë°± ì…ë ¥ì— ëŒ€í•œ ì˜ˆì™¸ì²˜ë¦¬ê°€ ìˆì–´ì•¼ í•˜ë‚˜ ì´ë²ˆ ë²„ì „ì—ì„œëŠ” ëª¨ë‘ ì˜ ì…ë ¥ëœê²ƒìœ¼ë¡œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
 		try {
-			// 2. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á
+			// 2. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°
 			conn = ConnectionProvider.getConnection();
 
 			String sql = "select * from dept  order by dname";
@@ -367,7 +367,7 @@ public class DeptDao {
 			System.out.println("=======================================================================");
 			
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			// pstmt.close();
 			// conn.close();
 
@@ -375,7 +375,7 @@ public class DeptDao {
 			e.printStackTrace();
 		} finally {
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			if (rs != null) {
 				try {
 					rs.close();

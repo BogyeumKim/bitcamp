@@ -6,24 +6,20 @@ import java.sql.SQLException;
 
 public class ConnectionProvider {
 
-	public static Connection getConnection() {
-		// 2. 单捞磐海捞胶 楷搬
+	public static Connection getConnection() throws SQLException {
+		// 2. 雿办澊韯半矤鞚挫姢 鞐瓣舶
 		Connection conn = null;
 
-		// String url = "jdbc:oracle:thin:@林家:器飘:单捞磐海捞胶捞抚";
-		// 林家 : localhost or 127.0.0.1
+		// String url = "jdbc:oracle:thin:@欤检唽:韽姼:雿办澊韯半矤鞚挫姢鞚措";
+		// 欤检唽 : localhost or 127.0.0.1
 		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 		String user = "scott";
 		String pw = "tiger";
 
-		// Connection 按眉 积己
-		try {
-			conn = DriverManager.getConnection(url, user, pw);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		// Connection 臧濎泊 靸濎劚
+
+		conn = DriverManager.getConnection(url, user, pw);
+
 		return conn;
 	}
 

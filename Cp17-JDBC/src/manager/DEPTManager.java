@@ -23,24 +23,24 @@ public class DEPTManager {
 
 		switch (select) {
 		case 1:
-			System.out.println("ÀüÃ¼ ¸®½ºÆ® Ãâ·Â");
+			System.out.println("ì „ì²´ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥");
 			deptList();
 			break;
 		case 2:
-			System.out.println("ºÎ¼­ Á¤º¸¸¦ ÀÔ·ÂÇÕ´Ï´Ù.");
-			deptInsert(); // »ç¿ëÀÚÀÇ ÀÔ·Âµ¥ÀÌÅÍ dept °´Ã¼¿¡ ´ã¾Æ¼­ dao insert ¸Ş¼­µå·Î Àü´Ş
+			System.out.println("ë¶€ì„œ ì •ë³´ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤.");
+			deptInsert(); // ì‚¬ìš©ìì˜ ì…ë ¥ë°ì´í„° dept ê°ì²´ì— ë‹´ì•„ì„œ dao insert ë©”ì„œë“œë¡œ ì „ë‹¬
 			break;
 		case 3:
-			System.out.println("ºÎ¼­ Á¤º¸¸¦ °Ë»öÇÕ´Ï´Ù.");
-			deptSearch(); // »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ÀÌ¸§À» dao search Àü´Ş
+			System.out.println("ë¶€ì„œ ì •ë³´ë¥¼ ê²€ìƒ‰í•©ë‹ˆë‹¤.");
+			deptSearch(); // ì‚¬ìš©ìê°€ ì…ë ¥í•œ ì´ë¦„ì„ dao search ì „ë‹¬
 			break;
 		case 4:
-			System.out.println("ºÎ¼­ Á¤º¸¸¦ »èÁ¦ÇÕ´Ï´Ù.");
-			deptDelete(); // ÀÌ¸§ ¶Ç´Â ºÎ¼­¹øÈ£ dao delete Àü´Ş
+			System.out.println("ë¶€ì„œ ì •ë³´ë¥¼ ì‚­ì œí•©ë‹ˆë‹¤.");
+			deptDelete(); // ì´ë¦„ ë˜ëŠ” ë¶€ì„œë²ˆí˜¸ dao delete ì „ë‹¬
 			break;
 		case 5:
-			System.out.println("ºÎ¼­ Á¤º¸¸¦ ¼öÁ¤ÇÕ´Ï´Ù.");
-			deptEdit(); // 1. ¼öÁ¤¤¾°íÀÚ ÇÏ´Â µ¥ÀÌÅÍ À¯¹« È®ÀÎ -> 2.»ç¿ëÀÚ·ÎºÎÅÍ µ¥ÀÌÅÍ ¹Ş¾Æ¼­ Àü´Ş
+			System.out.println("ë¶€ì„œ ì •ë³´ë¥¼ ìˆ˜ì •í•©ë‹ˆë‹¤.");
+			deptEdit(); // 1. ìˆ˜ì •ã…ê³ ì í•˜ëŠ” ë°ì´í„° ìœ ë¬´ í™•ì¸ -> 2.ì‚¬ìš©ìë¡œë¶€í„° ë°ì´í„° ë°›ì•„ì„œ ì „ë‹¬
 			break;
 
 		}
@@ -54,17 +54,17 @@ public class DEPTManager {
 		try {
 			conn = ConnectionProvider.getConnection();
 
-			conn.setAutoCommit(false); // ±âº»°ªÀº true : ÀÚµ¿ Ä¿¹Ô
+			conn.setAutoCommit(false); // ê¸°ë³¸ê°’ì€ true : ìë™ ì»¤ë°‹
 
-			// 1. ¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â µ¥ÀÌÅÍ À¯¹« È®ÀÎ -> 2.»ç¿ëÀÚ·ÎºÎÅÍ µ¥ÀÌÅÍ ¹Ş¾Æ¼­ Àü´Ş
+			// 1. ìˆ˜ì •í•˜ê³ ì í•˜ëŠ” ë°ì´í„° ìœ ë¬´ í™•ì¸ -> 2.ì‚¬ìš©ìë¡œë¶€í„° ë°ì´í„° ë°›ì•„ì„œ ì „ë‹¬
 
-			// »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ º¯¼ö
+			// ì‚¬ìš©ì ì…ë ¥ì •ë³´ ë³€ìˆ˜
 
-			System.out.println("¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â ºÎ¼­ ÀÌ¸§ : ");
+			System.out.println("ìˆ˜ì •í•˜ê³ ì í•˜ëŠ” ë¶€ì„œ ì´ë¦„ : ");
 			ManageMain.sc.nextLine();
 			String searchName = ManageMain.sc.nextLine();
 
-			// 1. ¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â µ¥ÀÌÅÍ À¯¹« È®ÀÎ
+			// 1. ìˆ˜ì •í•˜ê³ ì í•˜ëŠ” ë°ì´í„° ìœ ë¬´ í™•ì¸
 			int rowCnt = dao.deptSearchCount(searchName, conn);
 			// System.out.println(rowCnt);
 
@@ -73,37 +73,37 @@ public class DEPTManager {
 				Dept dept = dao.deptSearchName(searchName, conn);
 
 				if (dept == null) {
-					System.out.println("Ã£À¸½Ã´Â ÀÌ¸§ÀÇ Á¤º¸°¡ Á¸ÀçÇÏÁö¾Ê½À´Ï´Ù.");
+					System.out.println("ì°¾ìœ¼ì‹œëŠ” ì´ë¦„ì˜ ì •ë³´ê°€ ì¡´ì¬í•˜ì§€ì•ŠìŠµë‹ˆë‹¤.");
 					return;
 				}
 
-				// »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ º¯¼ö
-				System.out.println("ºÎ¼­ Á¤º¸¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+				// ì‚¬ìš©ì ì…ë ¥ì •ë³´ ë³€ìˆ˜
+				System.out.println("ë¶€ì„œ ì •ë³´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 
-				System.out.println("ºÎ¼­ ¹øÈ£ : " + dept.getDeptno());
-				System.out.println("ºÎ¼­ ¹øÈ£´Â ¼öÁ¤µÇÁö ¾Ê½À´Ï´Ù.");
+				System.out.println("ë¶€ì„œ ë²ˆí˜¸ : " + dept.getDeptno());
+				System.out.println("ë¶€ì„œ ë²ˆí˜¸ëŠ” ìˆ˜ì •ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 
-				System.out.println("ºÎ¼­ ÀÌ¸§ ( " + dept.getDname() + "  ) : ");
+				System.out.println("ë¶€ì„œ ì´ë¦„ ( " + dept.getDname() + "  ) : ");
 				String dname = ManageMain.sc.nextLine();
 
-				System.out.println("Áö¿ª ( " + dept.getLoc() + "  ) : ");
+				System.out.println("ì§€ì—­ ( " + dept.getLoc() + "  ) : ");
 				String loc = ManageMain.sc.nextLine();
 
-				// °ø¹é ÀÔ·Â¿¡ ´ëÇÑ ¿¹¿ÜÃ³¸®°¡ ÀÖ¾î¾ß ÇÏ³ª ÀÌ¹ø ¹öÀü¿¡¼­´Â ¸ğµÎ Àß ÀÔ·ÂµÈ°ÍÀ¸·Î Ã³¸®ÇÕ´Ï´Ù.
+				// ê³µë°± ì…ë ¥ì— ëŒ€í•œ ì˜ˆì™¸ì²˜ë¦¬ê°€ ìˆì–´ì•¼ í•˜ë‚˜ ì´ë²ˆ ë²„ì „ì—ì„œëŠ” ëª¨ë‘ ì˜ ì…ë ¥ëœê²ƒìœ¼ë¡œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
 				Dept newDept = new Dept(dept.getDeptno(), dname, loc);
 
 				int resultCnt = dao.deptEdit(newDept, conn);
 
 				if (resultCnt > 0) {
-					System.out.println("Á¤»óÀûÀ¸·Î ¼öÁ¤ µÇ¾ú½À´Ï´Ù.");
-					System.out.println(resultCnt + "ÇàÀÌ ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
+					System.out.println("ì •ìƒì ìœ¼ë¡œ ìˆ˜ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
+					System.out.println(resultCnt + "í–‰ì´ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				} else {
-					System.out.println("¼öÁ¤ÀÌ µÇÁö¾Ê¾Ò½À´Ï´Ù. È®ÀÎÈÄ Àç ½ÃµµÇØÁÖ¼¼¿ä.");
+					System.out.println("ìˆ˜ì •ì´ ë˜ì§€ì•Šì•˜ìŠµë‹ˆë‹¤. í™•ì¸í›„ ì¬ ì‹œë„í•´ì£¼ì„¸ìš”.");
 				}
 
 			} else {
-				System.out.println("Ã£À¸½Ã´Â ÀÌ¸§ÀÇ Á¤º¸°¡ Á¸ÀçÇÏÁö¾Ê½À´Ï´Ù.");
+				System.out.println("ì°¾ìœ¼ì‹œëŠ” ì´ë¦„ì˜ ì •ë³´ê°€ ì¡´ì¬í•˜ì§€ì•ŠìŠµë‹ˆë‹¤.");
 			}
 			
 
@@ -132,48 +132,48 @@ public class DEPTManager {
 
 	public void deptInsert() {
 
-		// »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ º¯¼ö
-		System.out.println("ºÎ¼­ Á¤º¸¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		// ì‚¬ìš©ì ì…ë ¥ì •ë³´ ë³€ìˆ˜
+		System.out.println("ë¶€ì„œ ì •ë³´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 
-		System.out.println("ºÎ¼­¹øÈ£ : ");
+		System.out.println("ë¶€ì„œë²ˆí˜¸ : ");
 		int deptno = ManageMain.sc.nextInt();
-		System.out.println("ºÎ¼­ÀÌ¸§ : ");
+		System.out.println("ë¶€ì„œì´ë¦„ : ");
 		ManageMain.sc.nextLine();
 		String dname = ManageMain.sc.nextLine();
-		System.out.println("Áö¿ª : ");
+		System.out.println("ì§€ì—­ : ");
 		String loc = ManageMain.sc.nextLine();
 
-		// °ø¹é ÀÔ·Â¿¡ ´ëÇÑ ¿¹¿ÜÃ³¸®°¡ ÀÖ¾î¾ß ÇÏ³ª ÀÌ¹ø ¹öÀü¿¡¼­´Â ¸ğµÎ Àß ÀÔ·ÂµÈ°ÍÀ¸·Î Ã³¸®ÇÕ´Ï´Ù.
+		// ê³µë°± ì…ë ¥ì— ëŒ€í•œ ì˜ˆì™¸ì²˜ë¦¬ê°€ ìˆì–´ì•¼ í•˜ë‚˜ ì´ë²ˆ ë²„ì „ì—ì„œëŠ” ëª¨ë‘ ì˜ ì…ë ¥ëœê²ƒìœ¼ë¡œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
 		Dept dept = new Dept(deptno, dname, loc);
 
 		int resultCnt = dao.deptInsert(dept);
 
 		if (resultCnt > 0) {
-			System.out.println("Á¤»óÀûÀ¸·Î ÀÔ·Â µÇ¾ú½À´Ï´Ù.");
-			System.out.println(resultCnt + "ÇàÀÌ ÀÔ·ÂµÇ¾ú½À´Ï´Ù.");
+			System.out.println("ì •ìƒì ìœ¼ë¡œ ì…ë ¥ ë˜ì—ˆìŠµë‹ˆë‹¤.");
+			System.out.println(resultCnt + "í–‰ì´ ì…ë ¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		} else {
-			System.out.println("ÀÔ·ÂÀÌ µÇÁö¾Ê¾Ò½À´Ï´Ù. È®ÀÎÈÄ Àç ½ÃµµÇØÁÖ¼¼¿ä.");
+			System.out.println("ì…ë ¥ì´ ë˜ì§€ì•Šì•˜ìŠµë‹ˆë‹¤. í™•ì¸í›„ ì¬ ì‹œë„í•´ì£¼ì„¸ìš”.");
 		}
 
-	}
-
+	}                                                      
+                                        
 	public void deptDelete() {
 
-		// »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ º¯¼ö
+		// ì‚¬ìš©ì ì…ë ¥ì •ë³´ ë³€ìˆ˜
 
-		System.out.println("»èÁ¦ÇÏ°íÀÚ ÇÏ´Â ºÎ¼­ÀÌ¸§ : ");
+		System.out.println("ì‚­ì œí•˜ê³ ì í•˜ëŠ” ë¶€ì„œì´ë¦„ : ");
 		ManageMain.sc.nextLine();
 		String searchName = ManageMain.sc.nextLine();
 
-		// °ø¹é ÀÔ·Â¿¡ ´ëÇÑ ¿¹¿ÜÃ³¸®°¡ ÀÖ¾î¾ß ÇÏ³ª ÀÌ¹ø ¹öÀü¿¡¼­´Â ¸ğµÎ Àß ÀÔ·ÂµÈ°ÍÀ¸·Î Ã³¸®ÇÕ´Ï´Ù.
+		// ê³µë°± ì…ë ¥ì— ëŒ€í•œ ì˜ˆì™¸ì²˜ë¦¬ê°€ ìˆì–´ì•¼ í•˜ë‚˜ ì´ë²ˆ ë²„ì „ì—ì„œëŠ” ëª¨ë‘ ì˜ ì…ë ¥ëœê²ƒìœ¼ë¡œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
 		int resultCnt = dao.deptDelete(searchName);
 
 		if (resultCnt < 1) {
-			System.out.println("»èÁ¦ÇÒ Á¤º¸°¡ °Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("ì‚­ì œí•  ì •ë³´ê°€ ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
 		} else {
-			System.out.println(resultCnt + "ÇàÀÌ »èÁ¦ µÇ¾ú½À´Ï´Ù.");
+			System.out.println(resultCnt + "í–‰ì´ ì‚­ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}
 
 		System.out.println("=================================");
@@ -182,15 +182,15 @@ public class DEPTManager {
 
 	public void deptSearch() {
 
-		// »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ º¯¼ö
+		// ì‚¬ìš©ì ì…ë ¥ì •ë³´ ë³€ìˆ˜
 
-		System.out.println("°Ë»öÇÏ°íÀÚ ÇÏ´Â ºÎ¼­ÀÌ¸§ : ");
+		System.out.println("ê²€ìƒ‰í•˜ê³ ì í•˜ëŠ” ë¶€ì„œì´ë¦„ : ");
 		ManageMain.sc.nextLine();
 		String searchName = ManageMain.sc.nextLine();
 
 		List<Dept> list = dao.deptSearch(searchName);
 
-		System.out.println("°Ë»ö °á°ú");
+		System.out.println("ê²€ìƒ‰ ê²°ê³¼");
 		System.out.println("======================================");
 		for (Dept d : list) {
 			System.out.printf("%5s", d.getDeptno() + "\t");
@@ -213,7 +213,7 @@ public class DEPTManager {
 				System.out.printf("%12s", deptList.get(i).getLoc() + "\n");
 			}
 		} else {
-			System.out.println("ÀÔ·ÂµÈ µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("ì…ë ¥ëœ ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.");
 		}
 
 	}

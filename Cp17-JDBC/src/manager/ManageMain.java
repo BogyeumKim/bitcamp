@@ -14,12 +14,12 @@ public class ManageMain {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 
-		// 0. µå¶óÀÌ¹ö LIB Ãß°¡
-		// 1. µ¥ÀÌÅÍº£ÀÌ½º µå¶óÀÌ¹ö ·Îµå
-		// Class.forName(µå¶óÀÌ¹ö Å¬·¡½º ÀüÃ¼ÀÌ¸§)
+		// 0. ë“œë¼ì´ë²„ LIB ì¶”ê°€
+		// 1. ë°ì´í„°ë² ì´ìŠ¤ ë“œë¼ì´ë²„ ë¡œë“œ
+		// Class.forName(ë“œë¼ì´ë²„ í´ë˜ìŠ¤ ì „ì²´ì´ë¦„)
 		// Oracle : oracle.jdbc.driver.OracleDriver
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		System.out.println("µ¥ÀÌÅÍº£ÀÌ½º µå¶óÀÌ¹ö ·Îµå ¿Ï·á...!!");
+		System.out.println("ë°ì´í„°ë² ì´ìŠ¤ ë“œë¼ì´ë²„ ë¡œë“œ ì™„ë£Œ...!!");
 		
 		DEPTManager deptManager = new DEPTManager();
 
@@ -60,23 +60,23 @@ public class ManageMain {
 
 		switch (select) {
 		case 1:
-			System.out.println("ÀüÃ¼ ¸®½ºÆ® Ãâ·Â");
+			System.out.println("ì „ì²´ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥");
 			empList();
 			break;
 		case 2:
-			System.out.println("»ç¿ø Á¤º¸¸¦ ÀÔ·ÂÇÕ´Ï´Ù.");
+			System.out.println("ì‚¬ì› ì •ë³´ë¥¼ ì…ë ¥í•©ë‹ˆë‹¤.");
 			empInsert();
 			break;
 		case 3:
-			System.out.println("»ç¿ø Á¤º¸¸¦ °Ë»öÇÕ´Ï´Ù.");
+			System.out.println("ì‚¬ì› ì •ë³´ë¥¼ ê²€ìƒ‰í•©ë‹ˆë‹¤.");
 			empSearch();
 			break;
 		case 4:
-			System.out.println("»ç¿øÁ¤º¸¸¦ »èÁ¦ÇÕ´Ï´Ù.");
+			System.out.println("ì‚¬ì›ì •ë³´ë¥¼ ì‚­ì œí•©ë‹ˆë‹¤.");
 			empDelete();
 			break;
 		case 5:
-			System.out.println("»ç¿øÁ¤º¸¸¦ ¼öÁ¤ÇÕ´Ï´Ù.");
+			System.out.println("ì‚¬ì›ì •ë³´ë¥¼ ìˆ˜ì •í•©ë‹ˆë‹¤.");
 			empEdit();
 			break;
 
@@ -86,45 +86,45 @@ public class ManageMain {
 
 	private static void empEdit() {
 
-		// JDBC »ç¿ë °´Ã¼
+		// JDBC ì‚¬ìš© ê°ì²´
 		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		// »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ º¯¼ö
+		// ì‚¬ìš©ì ì…ë ¥ì •ë³´ ë³€ìˆ˜
 
-		System.out.println("¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â »ç¿øÀÌ¸§ : ");
+		System.out.println("ìˆ˜ì •í•˜ê³ ì í•˜ëŠ” ì‚¬ì›ì´ë¦„ : ");
 		sc.nextLine();
 		String searchName = sc.nextLine();
 
 		try {
-			// 0. µå¶óÀÌ¹ö LIB Ãß°¡
-			// 1. µ¥ÀÌÅÍº£ÀÌ½º µå¶óÀÌ¹ö ·Îµå
-			// Class.forName(µå¶óÀÌ¹ö Å¬·¡½º ÀüÃ¼ÀÌ¸§)
+			// 0. ë“œë¼ì´ë²„ LIB ì¶”ê°€
+			// 1. ë°ì´í„°ë² ì´ìŠ¤ ë“œë¼ì´ë²„ ë¡œë“œ
+			// Class.forName(ë“œë¼ì´ë²„ í´ë˜ìŠ¤ ì „ì²´ì´ë¦„)
 			// Oracle : oracle.jdbc.driver.OracleDriver
 			//Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			// 2. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á
+			// 2. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°
 
-			// String url = "jdbc:oracle:thin:@ÁÖ¼Ò:Æ÷Æ®:µ¥ÀÌÅÍº£ÀÌ½ºÀÌ¸§";
-			// ÁÖ¼Ò : localhost or 127.0.0.1
+			// String url = "jdbc:oracle:thin:@ì£¼ì†Œ:í¬íŠ¸:ë°ì´í„°ë² ì´ìŠ¤ì´ë¦„";
+			// ì£¼ì†Œ : localhost or 127.0.0.1
 			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 			String user = "scott";
 			String pw = "tiger";
 
-			// Connection °´Ã¼ »ı¼º
+			// Connection ê°ì²´ ìƒì„±
 			conn = DriverManager.getConnection(url, user, pw);
 
-			// 3. SQL Ã³¸®
+			// 3. SQL ì²˜ë¦¬
 			// Statement or PreparedStatement
-			// pstmt = conn.prepareStatement(SQL ¹®Àå)
+			// pstmt = conn.prepareStatement(SQL ë¬¸ì¥)
 
-			// ÁÖÀÇ !!!!!
-			// ÀÔ·ÂµÈ ¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â ÀÌ¸§ÀÇ µ¥ÀÌÅÍ°¡ Á¸ÀçÇØ¾ß ¼öÁ¤ µ¥ÀÌÅÍ ÀÔ·ÂÀÌ ½ÃÀÛ½ÃÅµ´Ï´Ù.
-			// ±×¸®°í ÀÌ¸§ÀÇ µ¥ÀÌÅÍ´Â À¯ÀÏÁ¶°ÇÀÌ ÀÖ¾î¾ß ÇÕ´Ï´Ù.
-			// À¯ÀÏÁ¶°ÇÀÌ ¾Æ´Ï¶ó¸é ¿©·¯°³ÀÇ Çà¿¡ ¼öÁ¤ Ã³¸®°¡ ÀÌ·ç¾îÁı´Ï´Ù.
-			// ÇöÀç ¹öÀü¿¡¼­´Â À¯ÀÏÇÑ °ªÀ¸·Î »ı°¢ÇÏ°í Ã³¸®ÇÕ´Ï´Ù.
+			// ì£¼ì˜ !!!!!
+			// ì…ë ¥ëœ ìˆ˜ì •í•˜ê³ ì í•˜ëŠ” ì´ë¦„ì˜ ë°ì´í„°ê°€ ì¡´ì¬í•´ì•¼ ìˆ˜ì • ë°ì´í„° ì…ë ¥ì´ ì‹œì‘ì‹œí‚µë‹ˆë‹¤.
+			// ê·¸ë¦¬ê³  ì´ë¦„ì˜ ë°ì´í„°ëŠ” ìœ ì¼ì¡°ê±´ì´ ìˆì–´ì•¼ í•©ë‹ˆë‹¤.
+			// ìœ ì¼ì¡°ê±´ì´ ì•„ë‹ˆë¼ë©´ ì—¬ëŸ¬ê°œì˜ í–‰ì— ìˆ˜ì • ì²˜ë¦¬ê°€ ì´ë£¨ì–´ì§‘ë‹ˆë‹¤.
+			// í˜„ì¬ ë²„ì „ì—ì„œëŠ” ìœ ì¼í•œ ê°’ìœ¼ë¡œ ìƒê°í•˜ê³  ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
 			stmt = conn.createStatement();
 
@@ -132,7 +132,7 @@ public class ManageMain {
 
 			rs = stmt.executeQuery(selectSql);
 
-			// ¼öÁ¤ ÀüÀÇ µ¥ÀÌÅÍ
+			// ìˆ˜ì • ì „ì˜ ë°ì´í„°
 			int sEmpno = 0;
 			String sEname = "";
 			int sDeptno = 0;
@@ -144,26 +144,26 @@ public class ManageMain {
 				sSal = rs.getInt("sal");
 				sDeptno = rs.getInt("deptno");
 			} else {
-				System.out.println("°Ë»öÇÏ½Å ÀÌ¸§ÀÇ µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+				System.out.println("ê²€ìƒ‰í•˜ì‹  ì´ë¦„ì˜ ë°ì´í„°ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				return;
 			}
 
-			// »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ º¯¼ö
-			System.out.println("»ç¿ø Á¤º¸¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			// ì‚¬ìš©ì ì…ë ¥ì •ë³´ ë³€ìˆ˜
+			System.out.println("ì‚¬ì› ì •ë³´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 
-			System.out.println("»ç¿ø¹øÈ£ : " + sEmpno);
-			System.out.println("»ç¿ø¹øÈ£´Â ¼öÁ¤µÇÁö ¾Ê½À´Ï´Ù.");
+			System.out.println("ì‚¬ì›ë²ˆí˜¸ : " + sEmpno);
+			System.out.println("ì‚¬ì›ë²ˆí˜¸ëŠ” ìˆ˜ì •ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 
-			System.out.println("»ç¿øÀÌ¸§ ( " + sEname + "  ) : ");
+			System.out.println("ì‚¬ì›ì´ë¦„ ( " + sEname + "  ) : ");
 			String ename = sc.nextLine();
 
-			System.out.println("±Ş¿©( " + sSal + "  ) : ");
+			System.out.println("ê¸‰ì—¬( " + sSal + "  ) : ");
 			int sal = sc.nextInt();
 
-			System.out.println("ºÎ¼­¹øÈ£( " + sDeptno + "  ) : ");
+			System.out.println("ë¶€ì„œë²ˆí˜¸( " + sDeptno + "  ) : ");
 			int deptno = sc.nextInt();
 
-			// °ø¹é ÀÔ·Â¿¡ ´ëÇÑ ¿¹¿ÜÃ³¸®°¡ ÀÖ¾î¾ß ÇÏ³ª ÀÌ¹ø ¹öÀü¿¡¼­´Â ¸ğµÎ Àß ÀÔ·ÂµÈ°ÍÀ¸·Î Ã³¸®ÇÕ´Ï´Ù.
+			// ê³µë°± ì…ë ¥ì— ëŒ€í•œ ì˜ˆì™¸ì²˜ë¦¬ê°€ ìˆì–´ì•¼ í•˜ë‚˜ ì´ë²ˆ ë²„ì „ì—ì„œëŠ” ëª¨ë‘ ì˜ ì…ë ¥ëœê²ƒìœ¼ë¡œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
 			String sql = "update emp  set  ename=?, sal=?, deptno=?  where empno=?";
 
@@ -178,13 +178,13 @@ public class ManageMain {
 			int resultCnt = pstmt.executeUpdate();
 
 			if (resultCnt > 0) {
-				System.out.println("Á¤»óÀûÀ¸·Î ¼öÁ¤ µÇ¾ú½À´Ï´Ù.");
-				System.out.println(resultCnt + "ÇàÀÌ ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
+				System.out.println("ì •ìƒì ìœ¼ë¡œ ìˆ˜ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
+				System.out.println(resultCnt + "í–‰ì´ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			} else {
-				System.out.println("¼öÁ¤ÀÌ µÇÁö¾Ê¾Ò½À´Ï´Ù. È®ÀÎÈÄ Àç ½ÃµµÇØÁÖ¼¼¿ä.");
+				System.out.println("ìˆ˜ì •ì´ ë˜ì§€ì•Šì•˜ìŠµë‹ˆë‹¤. í™•ì¸í›„ ì¬ ì‹œë„í•´ì£¼ì„¸ìš”.");
 			}
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			// pstmt.close();
 			// conn.close();
 
@@ -192,7 +192,7 @@ public class ManageMain {
 			e.printStackTrace();
 		} finally {
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			if (rs != null) {
 				try {
 					rs.close();
@@ -235,30 +235,30 @@ public class ManageMain {
 
 	private static void empList() {
 
-		// JDBC »ç¿ë °´Ã¼
+		// JDBC ì‚¬ìš© ê°ì²´
 		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		// °ø¹é ÀÔ·Â¿¡ ´ëÇÑ ¿¹¿ÜÃ³¸®°¡ ÀÖ¾î¾ß ÇÏ³ª ÀÌ¹ø ¹öÀü¿¡¼­´Â ¸ğµÎ Àß ÀÔ·ÂµÈ°ÍÀ¸·Î Ã³¸®ÇÕ´Ï´Ù.
+		// ê³µë°± ì…ë ¥ì— ëŒ€í•œ ì˜ˆì™¸ì²˜ë¦¬ê°€ ìˆì–´ì•¼ í•˜ë‚˜ ì´ë²ˆ ë²„ì „ì—ì„œëŠ” ëª¨ë‘ ì˜ ì…ë ¥ëœê²ƒìœ¼ë¡œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
 		try {
-			// 0. µå¶óÀÌ¹ö LIB Ãß°¡
-			// 1. µ¥ÀÌÅÍº£ÀÌ½º µå¶óÀÌ¹ö ·Îµå
-			// Class.forName(µå¶óÀÌ¹ö Å¬·¡½º ÀüÃ¼ÀÌ¸§)
+			// 0. ë“œë¼ì´ë²„ LIB ì¶”ê°€
+			// 1. ë°ì´í„°ë² ì´ìŠ¤ ë“œë¼ì´ë²„ ë¡œë“œ
+			// Class.forName(ë“œë¼ì´ë²„ í´ë˜ìŠ¤ ì „ì²´ì´ë¦„)
 			// Oracle : oracle.jdbc.driver.OracleDriver
 			//Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			// 2. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á
+			// 2. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°
 
-			// String url = "jdbc:oracle:thin:@ÁÖ¼Ò:Æ÷Æ®:µ¥ÀÌÅÍº£ÀÌ½ºÀÌ¸§";
-			// ÁÖ¼Ò : localhost or 127.0.0.1
+			// String url = "jdbc:oracle:thin:@ì£¼ì†Œ:í¬íŠ¸:ë°ì´í„°ë² ì´ìŠ¤ì´ë¦„";
+			// ì£¼ì†Œ : localhost or 127.0.0.1
 			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 			String user = "scott";
 			String pw = "tiger";
 
-			// Connection °´Ã¼ »ı¼º
+			// Connection ê°ì²´ ìƒì„±
 			conn = DriverManager.getConnection(url, user, pw);
 
 			String sql = "select * from emp  order by ename";
@@ -268,7 +268,7 @@ public class ManageMain {
 			rs = stmt.executeQuery(sql);
 
 			int resultCnt = 0;
-			System.out.println("°Ë»ö °á°ú");
+			System.out.println("ê²€ìƒ‰ ê²°ê³¼");
 			System.out.println("=======================================================================");
 			while (rs.next()) {
 				System.out.print(rs.getInt("empno") + "\t");
@@ -283,12 +283,12 @@ public class ManageMain {
 				resultCnt++;
 			}
 			if (resultCnt < 1) {
-				System.out.println("°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù.");
+				System.out.println("ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
 			}
 
 			System.out.println("=======================================================================");
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			// pstmt.close();
 			// conn.close();
 
@@ -296,7 +296,7 @@ public class ManageMain {
 			e.printStackTrace();
 		} finally {
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			if (rs != null) {
 				try {
 					rs.close();
@@ -330,36 +330,36 @@ public class ManageMain {
 
 	private static void empDelete() {
 
-		// JDBC »ç¿ë °´Ã¼
+		// JDBC ì‚¬ìš© ê°ì²´
 		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		// »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ º¯¼ö
+		// ì‚¬ìš©ì ì…ë ¥ì •ë³´ ë³€ìˆ˜
 
-		System.out.println("»èÁ¦ÇÏ°íÀÚ ÇÏ´Â »ç¿øÀÌ¸§ : ");
+		System.out.println("ì‚­ì œí•˜ê³ ì í•˜ëŠ” ì‚¬ì›ì´ë¦„ : ");
 		sc.nextLine();
 		String searchName = sc.nextLine();
 
-		// °ø¹é ÀÔ·Â¿¡ ´ëÇÑ ¿¹¿ÜÃ³¸®°¡ ÀÖ¾î¾ß ÇÏ³ª ÀÌ¹ø ¹öÀü¿¡¼­´Â ¸ğµÎ Àß ÀÔ·ÂµÈ°ÍÀ¸·Î Ã³¸®ÇÕ´Ï´Ù.
+		// ê³µë°± ì…ë ¥ì— ëŒ€í•œ ì˜ˆì™¸ì²˜ë¦¬ê°€ ìˆì–´ì•¼ í•˜ë‚˜ ì´ë²ˆ ë²„ì „ì—ì„œëŠ” ëª¨ë‘ ì˜ ì…ë ¥ëœê²ƒìœ¼ë¡œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
 		try {
-			// 0. µå¶óÀÌ¹ö LIB Ãß°¡
-			// 1. µ¥ÀÌÅÍº£ÀÌ½º µå¶óÀÌ¹ö ·Îµå
-			// Class.forName(µå¶óÀÌ¹ö Å¬·¡½º ÀüÃ¼ÀÌ¸§)
+			// 0. ë“œë¼ì´ë²„ LIB ì¶”ê°€
+			// 1. ë°ì´í„°ë² ì´ìŠ¤ ë“œë¼ì´ë²„ ë¡œë“œ
+			// Class.forName(ë“œë¼ì´ë²„ í´ë˜ìŠ¤ ì „ì²´ì´ë¦„)
 			// Oracle : oracle.jdbc.driver.OracleDriver
 			//Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			// 2. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á
+			// 2. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°
 
-			// String url = "jdbc:oracle:thin:@ÁÖ¼Ò:Æ÷Æ®:µ¥ÀÌÅÍº£ÀÌ½ºÀÌ¸§";
-			// ÁÖ¼Ò : localhost or 127.0.0.1
+			// String url = "jdbc:oracle:thin:@ì£¼ì†Œ:í¬íŠ¸:ë°ì´í„°ë² ì´ìŠ¤ì´ë¦„";
+			// ì£¼ì†Œ : localhost or 127.0.0.1
 			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 			String user = "scott";
 			String pw = "tiger";
 
-			// Connection °´Ã¼ »ı¼º
+			// Connection ê°ì²´ ìƒì„±
 			conn = DriverManager.getConnection(url, user, pw);
 
 			String sql = "delete from emp  where ename=?";
@@ -370,14 +370,14 @@ public class ManageMain {
 			int resultCnt = pstmt.executeUpdate();
 
 			if (resultCnt < 1) {
-				System.out.println("»èÁ¦ÇÒ Á¤º¸°¡ °Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù.");
+				System.out.println("ì‚­ì œí•  ì •ë³´ê°€ ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
 			} else {
-				System.out.println(resultCnt + "ÇàÀÌ »èÁ¦ µÇ¾ú½À´Ï´Ù.");
+				System.out.println(resultCnt + "í–‰ì´ ì‚­ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			}
 
 			System.out.println("=================================");
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			// pstmt.close();
 			// conn.close();
 
@@ -385,7 +385,7 @@ public class ManageMain {
 			e.printStackTrace();
 		} finally {
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			if (rs != null) {
 				try {
 					rs.close();
@@ -418,41 +418,41 @@ public class ManageMain {
 	}
 
 	private static void empSearch() {
-		// JDBC »ç¿ë °´Ã¼
+		// JDBC ì‚¬ìš© ê°ì²´
 		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		// »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ º¯¼ö
+		// ì‚¬ìš©ì ì…ë ¥ì •ë³´ ë³€ìˆ˜
 
-		System.out.println("°Ë»öÇÏ°íÀÚ ÇÏ´Â »ç¿øÀÌ¸§ : ");
+		System.out.println("ê²€ìƒ‰í•˜ê³ ì í•˜ëŠ” ì‚¬ì›ì´ë¦„ : ");
 		sc.nextLine();
 		String searchName = sc.nextLine();
 
-		// °ø¹é ÀÔ·Â¿¡ ´ëÇÑ ¿¹¿ÜÃ³¸®°¡ ÀÖ¾î¾ß ÇÏ³ª ÀÌ¹ø ¹öÀü¿¡¼­´Â ¸ğµÎ Àß ÀÔ·ÂµÈ°ÍÀ¸·Î Ã³¸®ÇÕ´Ï´Ù.
+		// ê³µë°± ì…ë ¥ì— ëŒ€í•œ ì˜ˆì™¸ì²˜ë¦¬ê°€ ìˆì–´ì•¼ í•˜ë‚˜ ì´ë²ˆ ë²„ì „ì—ì„œëŠ” ëª¨ë‘ ì˜ ì…ë ¥ëœê²ƒìœ¼ë¡œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
 		try {
-			// 0. µå¶óÀÌ¹ö LIB Ãß°¡
-			// 1. µ¥ÀÌÅÍº£ÀÌ½º µå¶óÀÌ¹ö ·Îµå
-			// Class.forName(µå¶óÀÌ¹ö Å¬·¡½º ÀüÃ¼ÀÌ¸§)
+			// 0. ë“œë¼ì´ë²„ LIB ì¶”ê°€
+			// 1. ë°ì´í„°ë² ì´ìŠ¤ ë“œë¼ì´ë²„ ë¡œë“œ
+			// Class.forName(ë“œë¼ì´ë²„ í´ë˜ìŠ¤ ì „ì²´ì´ë¦„)
 			// Oracle : oracle.jdbc.driver.OracleDriver
 			//Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			// 2. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á
+			// 2. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°
 
-			// String url = "jdbc:oracle:thin:@ÁÖ¼Ò:Æ÷Æ®:µ¥ÀÌÅÍº£ÀÌ½ºÀÌ¸§";
-			// ÁÖ¼Ò : localhost or 127.0.0.1
+			// String url = "jdbc:oracle:thin:@ì£¼ì†Œ:í¬íŠ¸:ë°ì´í„°ë² ì´ìŠ¤ì´ë¦„";
+			// ì£¼ì†Œ : localhost or 127.0.0.1
 			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 			String user = "scott";
 			String pw = "tiger";
 
-			// Connection °´Ã¼ »ı¼º
+			// Connection ê°ì²´ ìƒì„±
 			conn = DriverManager.getConnection(url, user, pw);
 
-			// 3. SQL Ã³¸®
+			// 3. SQL ì²˜ë¦¬
 			// Statement or PreparedStatement
-			// pstmt = conn.prepareStatement(SQL ¹®Àå)
+			// pstmt = conn.prepareStatement(SQL ë¬¸ì¥)
 
 			// Mysql
 			// "SELECT * FROM epm WHERE name LIKE ?"
@@ -470,7 +470,7 @@ public class ManageMain {
 
 			int resultCnt = 0;
 
-			System.out.println("°Ë»ö °á°ú");
+			System.out.println("ê²€ìƒ‰ ê²°ê³¼");
 			System.out.println("=======================================================================");
 			while (rs.next()) {
 				System.out.print(rs.getInt("empno") + "\t");
@@ -484,12 +484,12 @@ public class ManageMain {
 				resultCnt++;
 			}
 			if (resultCnt < 1) {
-				System.out.println("°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù.");
+				System.out.println("ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
 			}
 
 			System.out.println("=======================================================================");
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			// pstmt.close();
 			// conn.close();
 
@@ -497,7 +497,7 @@ public class ManageMain {
 			e.printStackTrace();
 		} finally {
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			if (rs != null) {
 				try {
 					rs.close();
@@ -531,64 +531,64 @@ public class ManageMain {
 
 	private static void empInsert() {
 
-		// JDBC »ç¿ë °´Ã¼
+		// JDBC ì‚¬ìš© ê°ì²´
 		Connection conn = null;
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		// »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸ º¯¼ö
-		System.out.println("»ç¿ø Á¤º¸¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		// ì‚¬ìš©ì ì…ë ¥ì •ë³´ ë³€ìˆ˜
+		System.out.println("ì‚¬ì› ì •ë³´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 
-		System.out.println("»ç¿ø¹øÈ£ : ");
+		System.out.println("ì‚¬ì›ë²ˆí˜¸ : ");
 		int empno = sc.nextInt();
 
-		System.out.println("»ç¿øÀÌ¸§ : ");
+		System.out.println("ì‚¬ì›ì´ë¦„ : ");
 		sc.nextLine();
 		String ename = sc.nextLine();
 
-		System.out.println("Á÷±Ş(¾÷¹«) : ");
+		System.out.println("ì§ê¸‰(ì—…ë¬´) : ");
 		String job = sc.nextLine();
 
-		System.out.println("°ü¸®ÀÚ : ");
+		System.out.println("ê´€ë¦¬ì : ");
 		int mgr = sc.nextInt();
 
-		System.out.println("ÀÔ»çÀÏ : ");
+		System.out.println("ì…ì‚¬ì¼ : ");
 		sc.nextLine();
 		String hiredate = sc.nextLine();
 
-		System.out.println("±Ş¿© : ");
+		System.out.println("ê¸‰ì—¬ : ");
 		int sal = sc.nextInt();
 
-		System.out.println("¼ö´ç : ");
+		System.out.println("ìˆ˜ë‹¹ : ");
 		int comm = sc.nextInt();
 
-		System.out.println("ºÎ¼­¹øÈ£ : ");
+		System.out.println("ë¶€ì„œë²ˆí˜¸ : ");
 		int deptno = sc.nextInt();
 
-		// °ø¹é ÀÔ·Â¿¡ ´ëÇÑ ¿¹¿ÜÃ³¸®°¡ ÀÖ¾î¾ß ÇÏ³ª ÀÌ¹ø ¹öÀü¿¡¼­´Â ¸ğµÎ Àß ÀÔ·ÂµÈ°ÍÀ¸·Î Ã³¸®ÇÕ´Ï´Ù.
+		// ê³µë°± ì…ë ¥ì— ëŒ€í•œ ì˜ˆì™¸ì²˜ë¦¬ê°€ ìˆì–´ì•¼ í•˜ë‚˜ ì´ë²ˆ ë²„ì „ì—ì„œëŠ” ëª¨ë‘ ì˜ ì…ë ¥ëœê²ƒìœ¼ë¡œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 
 		try {
-			// 0. µå¶óÀÌ¹ö LIB Ãß°¡
-			// 1. µ¥ÀÌÅÍº£ÀÌ½º µå¶óÀÌ¹ö ·Îµå
-			// Class.forName(µå¶óÀÌ¹ö Å¬·¡½º ÀüÃ¼ÀÌ¸§)
+			// 0. ë“œë¼ì´ë²„ LIB ì¶”ê°€
+			// 1. ë°ì´í„°ë² ì´ìŠ¤ ë“œë¼ì´ë²„ ë¡œë“œ
+			// Class.forName(ë“œë¼ì´ë²„ í´ë˜ìŠ¤ ì „ì²´ì´ë¦„)
 			// Oracle : oracle.jdbc.driver.OracleDriver
 			//Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			// 2. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á
+			// 2. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°
 
-			// String url = "jdbc:oracle:thin:@ÁÖ¼Ò:Æ÷Æ®:µ¥ÀÌÅÍº£ÀÌ½ºÀÌ¸§";
-			// ÁÖ¼Ò : localhost or 127.0.0.1
+			// String url = "jdbc:oracle:thin:@ì£¼ì†Œ:í¬íŠ¸:ë°ì´í„°ë² ì´ìŠ¤ì´ë¦„";
+			// ì£¼ì†Œ : localhost or 127.0.0.1
 			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 			String user = "scott";
 			String pw = "tiger";
 
-			// Connection °´Ã¼ »ı¼º
+			// Connection ê°ì²´ ìƒì„±
 			conn = DriverManager.getConnection(url, user, pw);
 
-			// 3. SQL Ã³¸®
+			// 3. SQL ì²˜ë¦¬
 			// Statement or PreparedStatement
-			// pstmt = conn.prepareStatement(SQL ¹®Àå)
+			// pstmt = conn.prepareStatement(SQL ë¬¸ì¥)
 
 			String sql = "insert into emp " + " (empno, ename, job, mgr, hiredate, sal, comm, deptno) "
 					+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -606,13 +606,13 @@ public class ManageMain {
 			int resultCnt = pstmt.executeUpdate();
 
 			if (resultCnt > 0) {
-				System.out.println("Á¤»óÀûÀ¸·Î ÀÔ·Â µÇ¾ú½À´Ï´Ù.");
-				System.out.println(resultCnt + "ÇàÀÌ ÀÔ·ÂµÇ¾ú½À´Ï´Ù.");
+				System.out.println("ì •ìƒì ìœ¼ë¡œ ì…ë ¥ ë˜ì—ˆìŠµë‹ˆë‹¤.");
+				System.out.println(resultCnt + "í–‰ì´ ì…ë ¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			} else {
-				System.out.println("ÀÔ·ÂÀÌ µÇÁö¾Ê¾Ò½À´Ï´Ù. È®ÀÎÈÄ Àç ½ÃµµÇØÁÖ¼¼¿ä.");
+				System.out.println("ì…ë ¥ì´ ë˜ì§€ì•Šì•˜ìŠµë‹ˆë‹¤. í™•ì¸í›„ ì¬ ì‹œë„í•´ì£¼ì„¸ìš”.");
 			}
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			// pstmt.close();
 			// conn.close();
 
@@ -620,7 +620,7 @@ public class ManageMain {
 			e.printStackTrace();
 		} finally {
 
-			// 4. µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á Á¾·á
+			// 4. ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì¢…ë£Œ
 			if (rs != null) {
 				try {
 					rs.close();
