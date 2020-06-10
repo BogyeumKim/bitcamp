@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>레이아웃</title>
+    <meta charset="utf-8">
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        
+        div.border{
+            border: 1px solid #AAAAAA;
+        }
+        
+        #header{
+            width: 800px;
+            height: 100px;
+            
+/*            배경색*/
+            background-color: #FF0000;
+/*            영역의 수평방향 중앙 위치*/
+            margin: 0 auto;
+            
+/*            텍스트의 정렬 : 수평/수직 중앙*/
+            text-align: center;
+            line-height: 100px;
+            
+/*            텍스트설정*/
+            font-size: 2em;
+            color: aliceblue;
+            font-weight: bold;
+            
+        }
+    
+        #nav{
+               width: 800px;
+            height: 30px;
+            
+/*            배경색*/
+            background-color: green;
+/*            영역의 수평방향 중앙 위치*/
+            margin: 0 auto;
+            
+/*            텍스트의 정렬 : 수평/수직 중앙*/
+            text-align: center;
+            line-height: 10px;
+            
+/*            텍스트설정*/
+            font-size: 2em;
+            color: aliceblue;
+            font-weight: bold;
+            
+        }
+            
+        #aside{
+               width: 198px;
+            height: 300px;
+            
+/*            배경색*/
+            background-color: violet;
+/*            영역의 수평방향 중앙 위치*/
+/*            margin: 0 auto;*/
+            
+/*            텍스트의 정렬 : 수평/수직 중앙*/
+            text-align: center;
+            line-height: 100px;
+            
+/*            텍스트설정*/
+            font-size: 2em;
+            color: aliceblue;
+            font-weight: bold;
+            
+/*            수평방향 정렬*/
+            float: left;
+
+        }
+        
+        
+        #content{
+               width:598px;
+            height: 300px;
+            
+/*            배경색*/
+            background-color: blue;
+/*            영역의 수평방향 중앙 위치*/
+/*            margin: 0 auto;*/
+            
+/*            텍스트의 정렬 : 수평/수직 중앙*/
+            text-align: center;
+            line-height: 100px;
+            
+/*            텍스트설정*/
+            font-size: 2em;
+            color: aliceblue;
+            font-weight: bold;
+            
+            float: right;
+            
+        }
+            
+        #wrap{
+            width: 800px;
+            
+        margin: 0 auto;
+            
+            overflow: hidden;
+        }
+        
+        #footer{
+              width: 798px;
+            height: 100px;
+            
+/*            배경색*/
+            background-color: #FF0000;
+/*            영역의 수평방향 중앙 위치*/
+            margin: 0 auto;
+            
+/*            텍스트의 정렬 : 수평/수직 중앙*/
+            text-align: center;
+            line-height: 100px;
+            
+/*            텍스트설정*/
+            font-size: 2em;
+            color: aliceblue;
+            font-weight: bold;
+            
+            clear: both;
+            
+
+        }
+        
+        
+        
+    </style>
+    </head>
+    
+    <body>
+    
+    <div id="header" class="border">header</div>
+        <div id="nav" class="border">navigation</div>
+        
+        <div id="wrap">
+        <div id="aside" class="border">aside</div>
+        <div id="content" class="border">content</div>
+            
+          
+        <div id="footer" class="border">footer</div>
+          </div>
+        
+        
+    </body>
+
+
+</html>

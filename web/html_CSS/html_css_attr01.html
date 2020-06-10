@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <title>CSS 속성</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    
+    <style>
+    
+/*        CSS 에서 사용하는 단위 : px , % , em         
+        px : 절대 단위
+        % : 비율
+        em : 배수 
+        
+        
+*/
+      
+        
+        
+/*        tr:nth-childe(2)>td:nth-childe(1)  2번째 tr중 1번째 td만 적용 */
+       
+        
+        tr:nth-child(1)>td:nth-child(2){
+            font-size: 16px;
+            color:blue;
+        }
+        
+        
+        tr:nth-child(1)>td:nth-child(3){
+            font-size: 24px;
+            color: #FF0000;
+        }
+    
+        tr:nth-child(1)>td:nth-child(4){
+            font-size: 30px;
+            color: green;
+        }
+        
+        
+        tr:nth-child(2)>td:nth-child(1){
+            font-size: 1em;
+        }
+        
+        
+       tr:nth-child(2)>td:nth-child(2){
+            font-size: 1.5em;
+           color: #0000FF;
+        }
+    
+       tr:nth-child(2)>td:nth-child(3){
+            font-size: 2em;
+           color: #00ff00;
+        }
+        
+        tr:nth-child(3)>td:nth-child(2){
+            font-size: 100%
+        }
+        tr:nth-child(3)>td:nth-child(3){
+            font-size: 150%
+                color: rgb(0,0,255);
+        }
+        tr:nth-child(3)>td:nth-child(4){
+            font-size: 200%
+                color : rgb(0,255,0);
+        }
+        
+        body {
+            background-image: url(../images/1.PNG);
+                background-size: 50%;
+        }
+        
+        hr {
+            border: 3;
+            border-top: thin solid #AAAAAA;
+            
+        }
+        
+        div.box{
+            
+            width: 200px;
+            height: 200px;
+            border: 1px solid gray;
+        }
+        
+        #box1{
+            background-color: red;
+            
+            border-width: medium;
+            border-style: solid;
+            border-color: #DDDDDD;
+            
+            padding: 10px;
+/*            padding-top: 100px;*/
+            margin: 10px;
+/*            margin-top: 100px;*/
+        }
+        #box2{
+            background-color: blue;
+            
+            border: 13px solid #EEEEEE;
+            
+/*            border-radius: 100px;*/
+            border-radius: 50%;
+        }
+        
+        span{
+           border: 1px solid red;
+            
+        }
+        
+        #box{
+            border :1px solid blue;
+        }
+    
+        
+        #bg{
+            height: 300px;
+            width: 200px;
+            background-image: url('../images/2.jpeg');
+            background-size: cover;
+            
+            color:white;
+            font-size: 3em;
+            
+            line-height: 300px;
+            
+            
+        }
+        .font_kor{
+                font-family: '궁서체';
+                text-align: center;
+            }
+        
+         .font_web{
+                font-family: 'Nanum Gothic', sans-serif;
+            }
+    </style>
+    
+    
+    </head>
+
+
+    <body>
+        
+        <div id="bg" class="font_web">우아아아아</div>
+        <div id="bg" class="font_kor">가나다라</div>
+        
+    <span id="sp">
+        Dummy
+        </span>
+        
+        <div id="box">
+        <span>abcdefg hijklmn</span>
+        </div>
+        
+         <span>
+        
+        Dummy
+        
+        </span>
+        
+        <hr>
+        
+        <div class="box" id="box1">
+        TEXT
+        
+        </div>
+        
+        <div class="box" id="box2">
+        
+        
+        </div>
+        
+        
+    
+        
+        
+        
+        
+        
+        <hr>
+        <table border="1">
+        
+
+            
+            
+            
+              <tr>
+                <td>px</td>
+            <td>HTML5-16px</td>
+            <td>HTML5-24px</td>
+            <td>HTML5-30px</td>
+            </tr>
+            
+               <tr>
+                <td>em</td>
+            <td>HTML5-1em</td>
+            <td>HTML5-1.5em</td>
+            <td>HTML5-2em</td>
+            </tr>
+            
+               <tr>
+                <td>%</td>
+            <td>HTML5-100%</td>
+            <td>HTML5-150%</td>
+            <td>HTML5-200%</td>
+            </tr>
+            
+            
+        </table>
+        
+        
+        
+        
+    </body>
+
+</html>

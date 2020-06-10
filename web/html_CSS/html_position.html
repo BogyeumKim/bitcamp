@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>포지션</title>
+    <meta charset="utf-8">
+    <style>
+    
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        .box{
+            width: 100px;
+            height: 100px;
+            
+            border: 1px solid;
+            
+            font-size: 1.5em;
+            
+            text-align: center;
+         
+            line-height: 100px;
+            
+/*            위치속성*/
+                   position: absolute;
+        }
+        .red{
+            background-color: red;
+            left: 50px;
+            top:50px;
+        }
+        .green{
+            background-color: green;
+            left:100px;
+            top:100px;
+            /* 화면에 노출되는 순서 : z-index : 값이 높을수록 맨 위에 노출 */
+            z-index: 50;
+            
+     
+        }
+        .blue{
+            background-color: blue;
+            left:150px;
+            top: 150px;
+        }
+        
+    </style>
+    
+    </head>
+
+
+    <body>
+    
+    <div class="box red">red</div>
+        <div class="box green">green</div>
+        <div class="box blue">blue</div>
+    </body>
+
+
+</html>
