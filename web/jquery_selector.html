@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Selector</title>
+</head>
+
+<!-- jQuery CDN -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+
+        // $('*').css('color','red');
+        // $('div').css('color','red');
+        // $('#wrap').css('color','red');
+        $('.title').css('color','red');
+        $('h1.title').css('color','red');
+        $('.title').css('color','red');
+        $('ul>li').css('color','green');
+        $('#wrap li').css('background-color','black');
+        $('#wrap>h1+p').css('font-weight','bold');
+        $('#wrap>h1~p').css('font-size','2em');
+
+
+        var val = $('input[type=text]').val();
+        alert(val);
+
+        // $('input[type=text]').val('hello'); // input 벨류값바낌[기존 jqery써있는게 hello로]
+        var val = $('input:text');
+        val.val('change');
+
+        setTimeout(function(){
+
+            var selectedVal = $('select.loc>option:selected');
+        alert(selectedVal.val());
+
+        },4000);
+
+
+        
+
+        var site ='';
+        site += '<sites>';
+        site += '   <site>';
+            site += '   <name>NAVER</name>';
+            site += '   <url>http://www.naver.com</url>';
+        site += '   </site>';
+        site += '   <site>';
+            site += '   <name>DAUM</name>';
+            site += '   <url>http://www.daum.net</url>';
+        site += '   </site>';
+        site += '   <site>';
+            site += '   <name>GOOGLE</name>';
+            site += '   <url>http://www.google.com</url>';
+        site += '   </site>';
+        site += '</sites>';
+
+        var xmlDOC = $.parseXML(site);
+
+        var siteHtml = '';
+
+        $(xmlDOC).find('site').each(function(index){
+            var name = $(this).find('name').text();
+            var url = $(this).find('url').text();
+
+            siteHtml += '<div class="site">';
+            siteHtml += '<h3>'+name+'</h3>';
+            siteHtml += '<p>'+url+'</p>';
+            siteHtml += '</div>';
+
+        });
+        
+        $('#sites').html(siteHtml);
+
+    });
+
+
+</script>
+<style>
+
+
+    #sites{
+        overflow: hidden;
+    }
+
+    #sites>div.site{
+        width: 200px;
+        padding: 20px;
+        border: 1px solid #DDD;
+        border-radius: 5px;
+        float: left;
+    }
+
+</style>
+
+<body>
+
+
+    <div id="sites">
+
+
+    </div>
+
+
+
+
+
+
+<div id="wrap">
+
+
+    <select class="loc">
+        <option value="seoul">서울</option>
+        <option value="busan">부산</option>
+        <option value="jeju">제주</option>
+    </select>
+
+
+    <input type="text" id="uid" value="jQuery">
+
+
+<h1 class="title">안녕하세요</h1>
+
+<p class="title item">반갑습니다</p>
+
+<ul>
+    
+    <li>10</li>
+    <li>20</li>
+    <li>30</li>
+    <li>40</li>
+    <li>50</li>
+    </ul>
+    <p> 다음에 만나요</p>
+</div>
+
+
+    
+</body>
+</html>

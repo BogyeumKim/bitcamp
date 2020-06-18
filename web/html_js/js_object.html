@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>javascript : Object 객체</title>
+
+    <script>
+
+        var obj={}; // 기본 객체 생성 new Object()
+
+        console.log(typeof(ojb));
+
+        var obj = {
+            number :1,
+            str:'string',
+            check:false,
+            method:function(){},
+            Object:{},
+            arr:[]
+        };
+
+        console.log(obj.number);
+        console.log(obj);
+
+// var person = {
+//     name : '손흥민',
+//     age:27,
+//     hello:function(){
+//         alert('안녕하세요. 저는'+this.name+'입니다');
+//         alert(this.age+'세 입니다.');
+
+//         this.bye();
+//     },
+
+//     bye:function(){
+//         alert('bye');
+//     }
+// };
+
+// person.hello();
+
+// person.job='player';
+
+// alert(person.job);
+
+//생성자 함수
+// new 키워드를 이용해서 객체를 생성
+// 생성자 함수의 이름은 대문자로 시작
+
+function Student(uname, kor_score, math_score, eng_score){
+            this.name=uname;
+            this.kor=kor_score;
+            this.math=math_score;
+            this.eng=eng_score;
+
+            // this.getSum = function(){
+            //     return this.kor+this.math+this.eng;
+            // };
+
+            // this.getAvg = function() {
+            //     return this.getSum()/3;
+            // };
+
+        }
+
+        Student.prototype.getSum = function(){
+            return this.kor+this.math+this.eng;
+        };
+
+        Student.prototype.getAvg = function(){
+            return this.getSum()/3;
+        }
+
+
+        var students = [];
+        students.push(new Student('A1', 90, 73, 79));
+        students.push(new Student('A2', 79, 74, 88));
+        students.push(new Student('A3', 69, 89, 97));
+        students.push(new Student('A4', 95, 69, 86));
+        students.push(new Student('A5', 89, 98, 64));
+        students.push(new Student('A6', 99, 43, 85));
+        students.push(new Student('A7', 79, 87, 76));
+        students.push(new Student('A8', 97, 94, 67));
+        students.push(new Student('A9', 99, 86, 98));
+        students.push(new Student('A10', 99, 97,79));
+
+        students[0].kor=9;
+        // alert(students[0].kor);
+
+
+//var s1 = new Student();
+
+// var student = [];
+
+// student.push({    name:'a1',kor:90,math:10,eng:90 } );
+// student.push({    name:'a2',kor:69,math:80,eng:80 } );
+// student.push({    name:'a3',kor:92,math:70,eng:70 } );
+// student.push({    name:'a4',kor:77,math:60,eng:68 } );
+// student.push({    name:'a5',kor:91,math:70,eng:76 } );
+// student.push({    name:'a6',kor:70,math:88,eng:88 } );
+// student.push({    name:'a7',kor:99,math:79,eng:100 } );
+
+// for(var i=0; i<student.length; i++){
+//     student[i].getSum = function(){
+//         return this.kor+this.math+this.eng;
+//     };
+
+// };
+
+// for(var i=0; i<student.length; i++){
+//     student[i].getAvg = function(){
+//         return this.getSum/3;
+//     };
+
+// };
+
+// console.log(student);
+students.sort(function(left,right){
+            return right.getSum()-left.getSum();
+        }
+        );
+
+        students=students.slice(0,3);
+
+
+
+
+
+
+
+
+
+
+
+
+  var list = '';
+
+        for(var i=0; i<students.length; i++){
+
+            list += '<h4> ';
+            list += '이름:'+students[i].name;
+            list += ', 총점:'+students[i].getSum();
+            list += ', 평균:'+students[i].getAvg();
+            list += '</h4>' ;
+
+        }
+
+        // document.write(list);
+
+
+
+
+        function Rectangle(w,h){
+            // this.width=w;
+            // this.height=h;
+
+            var width=w;
+            var height=h;
+
+            this.getWidth = function(){
+                return width;
+            };
+
+            this.setWidth = function(w){
+                width=w;
+            }
+
+            
+
+            this.getArea=function(){
+                // return this.width*this.height;
+                return width*height;
+            }
+        };
+
+
+
+        // var rac = new Rectangle(10,4);
+
+        // rac.height=3; 이거쓰려면 this.width로 지역변수선언해줘야함
+        // alert(rac.width);
+        // alert(rac.getArea());
+
+
+
+        //배열의 정렬
+        // array.srot()
+       
+        
+
+
+
+
+    </script>
+
+
+
+
+
+</head>
+<body>
+    
+</body>
+</html>

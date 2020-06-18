@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON 객체</title>
+
+    <script src="../js/json_test.js"></script>
+
+
+
+
+    <script>
+        //javascript Obj
+        var book = { 
+            name:'java',
+            price:10000,
+            publisher:'Oracle'
+        }
+
+        console.log(obj);
+
+        // javascript Obj-> json(String)으로 변환
+        var jsondata = JSON.stringify(obj); // 얘가 메인
+
+        console.log(typeof(jsondata)); // 확인용
+
+        window.onload=function(){
+            document.getElementById('json').innerHTML=jsondata; // 확인용
+
+
+
+
+        //String  JSON  [ 변수 " "인 JSON형식임 ]
+        var newdata = '{"memberid":"cool","membername":"COOL","age":27,"program":["java","python","javascript"]}';
+        console.log(typeof(newdata)); // string형식으로 나옴
+
+        // JSON(String) -> Javascript Obj
+        var newObj = JSON.parse(newdata);
+        console.log(typeof(newObj)); // obj형식으로 나옴
+
+        console.log(newObj);
+
+        alert(newObj.memberid);
+
+        }; 
+
+
+        
+
+
+    </script>
+
+</head>
+<body>
+    
+    <h1 id="json">안녕하세요</h1>
+
+</body>
+</html>

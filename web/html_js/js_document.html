@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object</title>
+
+    <script>
+        window.onload=function(){
+
+        
+        // Tag Element 생성
+        var h1 =document.createElement('h1'); // <h1></h1>
+        
+        // Text Node 생성
+        var text = document.createTextNode('js에서 동적으로 만든 테그입니다.');
+
+        // <h1>js에서 동적으로 만든 테그입니다.</h1>
+        h1.appendChild(text);
+
+
+            // tag element 생성 
+            var img = document.createElement('img');
+            // img.src='../images/1.png';
+            // img.width=200;
+
+            // img.setAttribute('src','../images/2.jpeg');
+            // img.setAttribute('data-role','test-Image');
+            // img.data-role
+
+
+
+        // document.body.appendChild(h1);
+        // document.body.appendChild(img);
+
+
+  
+        var title = document.getElementById('title');
+
+        title.innerHTML +='<i>안녕하세요</i>';
+
+        var jobs=document.getElementsByName('job');
+        console.log(jobs[0].value);
+        // console.log(jobs[1].value);
+
+        var inputs = document.getElementsByTagName('input');
+        // console.log(inputs);
+        console.log(inputs[0].value);
+        // console.log(inputs[1].value);
+
+        inputs[0].value='새로운 데이터를 입력합니다.';
+
+        inputs[1].value='test ok'
+
+
+
+            var h1 = document.querySelector('#title');
+
+            h1.style.color='red';
+
+            console.log(h1.innerHTML);
+            console.log(h1.innerText);
+
+            var h1s=document.querySelectorAll('input[type=text]');
+
+            var btn_change = document.getElementById('btn');
+
+            btn_change.onclick=function(){
+                var header = document.getElementById('title');
+
+                header.style.color='blue';
+            }
+
+            console.log(h1s);
+
+
+            document.getElementById('btn_del').onclick = function(){
+            //btn_del 캐스팅
+
+                var h1_del=document.getElementById('title');//삭제대상
+                
+                //삭제대상 부모캐스팅
+                var wrap = document.getElementById('wrap');
+
+                //부모에서 자식 삭제
+                wrap.removeChild(h1_del);
+            }; 
+
+
+        };
+
+
+    
+
+        function change(){
+               
+            }
+
+    </script>
+
+
+
+
+
+
+
+</head>
+<body>
+    <div id="wrap">
+   <h1 id="title">html 문서 내부에 정의된 h1 테그입니다</h1>
+
+    </div>
+
+    <input type="text" name="job" value="tester" readonly>
+    <input type="text" name="title" value="modeler">
+    <br>
+    <input type="button" name="h1 tag delete" id="btn_del"> 
+    <input type="button" name="change" id="btn">
+
+</body>
+</html>
