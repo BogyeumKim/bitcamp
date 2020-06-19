@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_highlow game</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+    <style>
+        
+        input.b, input.c{
+            display: block;
+           margin: auto;
+           
+           font-size: 40px;
+           text-align: center;
+           margin-bottom: 20px;
+        }
+
+        header{
+        text-align: center;
+        }
+        h1.a:after {
+        content: "";
+        display: block;
+        width: 500px;
+        border-bottom: 3px solid gray;
+        margin: 20px  auto;
+      }
+    </style>
+
+
+    <script>
+
+        $(document).ready(function(){
+
+
+            var number = parseInt(Math.random()*100+1);
+
+            var uinsert = $('input[type=number].b');
+            var smit = $('input[type=submit].c');
+
+            smit.click(function(){
+              
+                alert(number);
+                if(number==uinsert.val()){
+                    alert('정답입니다');
+                }
+                if(number>uinsert.val()){
+                    alert('입력하신 숫자가 정답보다 작습니다');
+                    $('span').html(parseInt($('span').html())+1)
+                }
+                if(number<uinsert.val()){
+                    alert('입력하신 숫자가 정답보다 큽니다');
+                    $('span').html(parseInt($('span').html())+1)
+                }
+
+               
+                
+            });
+
+
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+    
+    <header>
+    <h1 class="a">High Low Game</h1>
+    </header>
+
+    <input type="number" class="b">
+    <input type="submit" class="c" value="정답제출">
+    <h3 style="color: red; text-align: center;">기회는 10번까지입니다.</h3>
+    정답 입력 회수 : <span style="color: red;">0</span>
+</body>
+</html>
