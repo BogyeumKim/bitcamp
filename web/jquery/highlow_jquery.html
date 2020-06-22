@@ -55,11 +55,19 @@
                     alert('입력하신 숫자가 정답보다 큽니다');
                     $('span').html(parseInt($('span').html())+1)
                 }
-
+                
+                var cnt = parseInt(('span').html());
+           
+            
+           if(cnt==2){
+               alert('기회를 다 썼습니다 게임이 종료됩니다.')
+           };
                
                 
             });
 
+          
+           
 
 
 
@@ -77,6 +85,6 @@
     <input type="number" class="b">
     <input type="submit" class="c" value="정답제출">
     <h3 style="color: red; text-align: center;">기회는 10번까지입니다.</h3>
-    정답 입력 회수 : <span style="color: red;">0</span>
+   <div style="text-align: center;"> 정답 입력 회수 : <span style="color: red;">0</span></div>
 </body>
 </html>
